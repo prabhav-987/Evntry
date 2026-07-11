@@ -18,7 +18,7 @@ MongoDB Atlas provides a fully managed, free cloud database. This is where `mong
    - On the left sidebar, click **"Database Access"**.
    - Click **"Add New Database User"**.
    - Choose **Password** authentication.
-   - Set a Username (e.g., `eventoradmin`) and a Password (e.g., `eventorapassword`). **Remember these.**
+   - Set a Username (e.g., `Evntrydmin`) and a Password (e.g., `Evntrypassword`). **Remember these.**
    - Click **Add User**.
 4. **Set Up Network Access (IP Whitelist)**:
    - On the left sidebar, click **"Network Access"**.
@@ -30,7 +30,7 @@ MongoDB Atlas provides a fully managed, free cloud database. This is where `mong
    - Click the **"Connect"** button on your new cluster.
    - Choose **"Drivers"** (Connect your application).
    - Copy the connection string provided. It will look something like this:
-     `mongodb+srv://eventoradmin:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority`
+     `mongodb+srv://Evntrydmin:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority`
    - **Important**: Replace `<password>` in the string with the actual password you created in Step 3. (Do not include the `< >` brackets).
 
 ---
@@ -43,7 +43,7 @@ To send emails automatically (booking confirmations), you need to configure an A
 2. Navigate to the **Security** tab on the left.
 3. Under "How you sign in to Google", select **2-Step Verification** and make sure it is turned ON.
 4. Once ON, go back to the Security tab, search for **App Passwords** in the search bar.
-5. Generate a new App Password (select "Other" and name it "Eventora").
+5. Generate a new App Password (select "Other" and name it "Evntry").
 6. Copy the 16-character password generated.
 
 ---
@@ -54,10 +54,10 @@ Now that you have your credentials, you need to plug them into the backend. Open
 
 ```env
 # Paste the MongoDB string you generated (make sure you swapped the password)
-MONGO_URI=mongodb+srv://eventoradmin:your_actual_password@cluster0.xxxxx.mongodb.net/eventora?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://Evntrydmin:your_actual_password@cluster0.xxxxx.mongodb.net/Evntry?retryWrites=true&w=majority
 
 # This can be any random string, but keep it secure.
-JWT_SECRET=supersecretjwtkey_eventora
+JWT_SECRET=supersecretjwtkey_Evntry
 
 # Email Setup Configured using Step 2
 EMAIL_USER=yourgmail@gmail.com
@@ -93,11 +93,11 @@ It will provide a local URL (e.g., `http://localhost:5173/`). Open this in your 
 
 ## Step 5: Test the API with Postman
 
-I have included an export file named `Eventora_Postman_Collection.json` in the root of the project. This contains every API route pre-configured.
+I have included an export file named `Evntry_Postman_Collection.json` in the root of the project. This contains every API route pre-configured.
 
 1. Open [Postman](https://www.postman.com/downloads/).
 2. Click **Import** (top left).
-3. Drag and drop the `Eventora_Postman_Collection.json` file into the window.
+3. Drag and drop the `Evntry_Postman_Collection.json` file into the window.
 4. The collection will act as an end-to-end script utilizing environment variables:
    - Run the **Register User** request, then trigger **Verify Account OTP**, to activate your first admin/user account.
    - Run the **Login** request. (This will automatically save your auth token into Postman).

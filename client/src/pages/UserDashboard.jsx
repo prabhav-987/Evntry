@@ -106,6 +106,13 @@ const UserDashboard = () => {
                                     <p className="text-red-500 italic">Event details unavailable (might have been deleted)</p>
                                 )}
                             </div>
+                            {booking.status === 'confirmed' && booking.qrCode && (
+                                <div className="p-4 border-t border-gray-50 flex flex-col items-center bg-white">
+                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Show at check-in</p>
+                                    <img src={booking.qrCode} alt="Ticket QR Code" className="w-32 h-32" />
+                                </div>
+                            )}
+
                             <div className="p-4 bg-gray-50 flex justify-between items-center shrink-0">
                                 {booking.eventId && booking.status !== 'cancelled' ? (
                                     <>

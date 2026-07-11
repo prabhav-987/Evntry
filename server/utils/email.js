@@ -24,7 +24,7 @@ const sendBookingEmail = async (userEmail, userName, eventTitle, qrCodeDataUrl) 
           <p>Show this QR code at check-in:</p>
           <img src="cid:ticketqr" alt="Ticket QR Code" style="width:220px;height:220px;" />
         ` : ''}
-        <p>Thank you for choosing Eventora.</p>
+        <p>Thank you for choosing Evntry.</p>
       `,
             attachments: qrCodeDataUrl ? [{
                 filename: 'ticket-qr.png',
@@ -42,9 +42,9 @@ const sendBookingEmail = async (userEmail, userName, eventTitle, qrCodeDataUrl) 
 
 const sendOTPEmail = async (userEmail, otp, type) => {
     try {
-        const title = type === 'account_verification' ? 'Verify your Eventora Account' : 'Eventora Booking Verification';
+        const title = type === 'account_verification' ? 'Verify your Evntry Account' : 'Evntry Booking Verification';
         const msg = type === 'account_verification'
-            ? 'Please use the following OTP to verify your new Eventora account.'
+            ? 'Please use the following OTP to verify your new Evntry account.'
             : 'Please use the following OTP to verify and confirm your event booking.';
 
         const mailOptions = {

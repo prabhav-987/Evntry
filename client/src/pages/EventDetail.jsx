@@ -30,6 +30,47 @@ const EventDetail = () => {
         fetchEvent();
     }, [id]);
 
+const launchRazorpay = async (booking) => {
+        try {
+            const { data: order } = await api.post(`/bookings/${booking._id}/create-order`);
+
+            const options = {
+                key: order.keyId,
+                amount: order.amount,
+                currency: order.currency,
+                name: 'Evntry',
+                description: `Ticket for ${order.eventTitle}`,
+                order_id: order.orderId,
+                handler: async (response) => {
+                    try {
+                        await api.post(`/bookings/${booking._id}/verify-payment`, response);
+                        navigate('/payment-success');
+                    } catch (err) {
+                        navigate('/payment-failed');
+                    }
+                },
+                modal: {
+                    ondismiss: () => {
+                        setError('Payment was cancelled.');
+                        setBookingLoading(false);
+                    }
+                },
+                prefill: {
+                    name: user.name,
+                    email: user.email,
+                },
+                theme: { color: '#111827' },
+            };
+
+            const rzp = new window.Razorpay(options);
+            rzp.on('payment.failed', () => navigate('/payment-failed'));
+            rzp.open();
+        } catch (err) {
+            setError(err.response?.data?.message || 'Could not start payment');
+            setBookingLoading(false);
+        }
+    };
+
     const handleBooking = async () => {
         if (!user) {
             navigate('/login');
@@ -44,16 +85,19 @@ const EventDetail = () => {
                 await api.post('/bookings/send-otp');
                 setShowOTP(true);
                 setSuccessMsg('OTP sent to your email. Please verify to confirm booking.');
+                setBookingLoading(false);
             } else {
-                await api.post('/bookings', { eventId: event._id, otp });
-                setSuccessMsg('Booking requested! Awaiting admin confirmation.');
+                const { data } = await api.post('/bookings', { eventId: event._id, otp });
                 setShowOTP(false);
-                // Update local seats count dynamically after booking
-                setEvent({ ...event, availableSeats: event.availableSeats - 1 });
+
+                if (data.requiresPayment) {
+                    await launchRazorpay(data.booking);
+                } else {
+                    navigate('/payment-success');
+                }
             }
         } catch (err) {
             setError(err.response?.data?.message || 'Booking failed');
-        } finally {
             setBookingLoading(false);
         }
     };

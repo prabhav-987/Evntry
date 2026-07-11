@@ -1,7 +1,7 @@
 {
-    "name": "eventora-server",
+    "name": "evntry-server",
     "version": "1.0.0",
-    "description": "Eventora Backend",
+    "description": "Evntry Backend",
     "main": "server.js",
     "scripts": {
         "start": "node server.js",

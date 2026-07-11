@@ -38,7 +38,7 @@ const Register = () => {
         <div className="max-w-md mx-auto mt-16 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-extrabold text-gray-900 mb-2">Create an Account</h2>
-                <p className="text-gray-500">Join Eventora today</p>
+                <p className="text-gray-500">Join Evntry today</p>
             </div>
 
             {error && <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-6 text-center shadow-inner border border-red-100">{error}</div>}
