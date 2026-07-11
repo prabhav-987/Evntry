@@ -85,7 +85,7 @@ const events = [
 
 const seedDatabase = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/eventora');
+        await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/Evntry');
         console.log('\n✅ MongoDB connection open...');
 
         await User.deleteMany();
@@ -160,8 +160,8 @@ const seedDatabase = async () => {
 
         console.log('\n🚀 Database seeded successfully!');
         console.log('-------------------------------------------');
-        console.log('Admin Email: admin@eventora.com');
-        console.log('User Email:  user@eventora.com');
+        console.log('Admin Email: admin@Evntry.com');
+        console.log('User Email:  user@Evntry.com');
         console.log('Password for all users: password123');
         console.log('-------------------------------------------\n');
 

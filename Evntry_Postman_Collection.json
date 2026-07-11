@@ -1,7 +1,7 @@
 {
     "info": {
         "_postman_id": "c7a8b29e-4c5d-4a1v-b3nf-9a8x7b6c5d4e",
-        "name": "Eventora APIs",
+        "name": "Evntry APIs",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
@@ -106,7 +106,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"email\": \"admin@eventora.com\",\n    \"password\": \"password123\"\n}"
+                            "raw": "{\n    \"email\": \"admin@Evntry.com\",\n    \"password\": \"password123\"\n}"
                         },
                         "url": {
                             "raw": "http://localhost:5000/api/auth/login",
