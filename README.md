@@ -1,6 +1,6 @@
-# Eventora - Full-Stack Event Booking Platform
+# Evntry - Full-Stack Event Booking Platform
 
-Eventora is a full-stack MERN application that allows users to seamlessly browse, register, and pay natively without any third party tools. It features an administrative dashboard for event organizers to create and manage free and paid events. All bookings can be managed manually by an admin to handle payments directly.
+Evntry is a full-stack MERN application that allows users to seamlessly browse, register, and pay natively without any third party tools. It features an administrative dashboard for event organizers to create and manage free and paid events. All bookings can be managed manually by an admin to handle payments directly.
 
 ## Features
 - **User Authentication**: Secure login & registration with JWT and bcrypt.
@@ -31,7 +31,7 @@ You will also need a MongoDB database (e.g., [MongoDB Atlas Free Tier](https://w
 Navigate to `server/.env` and fill in the necessary keys:
 ```env
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=supersecretjwtkey_eventora
+JWT_SECRET=supersecretjwtkey_Evntry
 EMAIL_USER=your_gmail_address
 EMAIL_PASS=your_gmail_app_password
 PORT=5000
@@ -42,7 +42,7 @@ PORT=5000
 You can now manage both backend and frontend from the project root:
 
 ```bash
-# from Eventora root
+# from Evntry root
 npm install
 npm run install:all
 npm run dev
