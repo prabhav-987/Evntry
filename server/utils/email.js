@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const sendBookingEmail = async (userEmail, userName, eventTitle) => {
+const sendBookingEmail = async (userEmail, userName, eventTitle, qrCodeDataUrl) => {
     try {
         const mailOptions = {
             from: process.env.EMAIL_USER,
@@ -20,8 +20,18 @@ const sendBookingEmail = async (userEmail, userName, eventTitle) => {
             html: `
         <h2>Hi ${userName}!</h2>
         <p>Your booking for the event <strong>${eventTitle}</strong> is successfully confirmed.</p>
+        ${qrCodeDataUrl ? `
+          <p>Show this QR code at check-in:</p>
+          <img src="cid:ticketqr" alt="Ticket QR Code" style="width:220px;height:220px;" />
+        ` : ''}
         <p>Thank you for choosing Eventora.</p>
-      `
+      `,
+            attachments: qrCodeDataUrl ? [{
+                filename: 'ticket-qr.png',
+                content: qrCodeDataUrl.split(';base64,').pop(),
+                encoding: 'base64',
+                cid: 'ticketqr'
+            }] : []
         };
         await transporter.sendMail(mailOptions);
         console.log('Email sent successfully to', userEmail);

@@ -6,7 +6,10 @@ const bookingSchema = new mongoose.Schema({
     status: { type: String, enum: ['confirmed', 'cancelled', 'pending'], default: 'pending' },
     paymentStatus: { type: String, enum: ['paid', 'not_paid'], default: 'not_paid' },
     amount: { type: Number, required: true },
-    bookedAt: { type: Date, default: Date.now }
+    bookedAt: { type: Date, default: Date.now },
+    razorpayOrderId: { type: String },
+    razorpayPaymentId: { type: String },
+    qrCode: { type: String }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Booking', bookingSchema);
