@@ -8,9 +8,7 @@ const razorpay = require('../utils/razorpay');
 
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
 
-// Shared logic: marks a booking confirmed, deducts a seat, generates the
-// ticket QR code, and emails the user. Used by both the payment-verification
-// flow and the admin manual-confirm flow, and for auto-confirming free events.
+//Here some functions can only be used by admin, and some by both admil and user, so role based acess is given
 const finalizeBooking = async (booking, event, paymentStatus) => {
     booking.status = 'confirmed';
     booking.paymentStatus = paymentStatus;
